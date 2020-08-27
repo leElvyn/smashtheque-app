@@ -15,6 +15,7 @@ fr:
       locations_city: Ville
       locations_country: Pays
       player: Joueur
+      smash_gg_user: Compte smash.gg
       team: Équipe
       twitch_channel: Chaîne Twitch
       you_tube_channel: Chaîne YouTube
@@ -111,6 +112,11 @@ fr:
         teams: Équipes
         team_ids: Équipes
         twitter_username: Compte Twitter
+        team: Équipe
+        team_id: Équipe
+      smash_gg_user:
+        << : *SHARED
+        smashgg_id: ID
       team:
         << : *SHARED
         admins: Admins

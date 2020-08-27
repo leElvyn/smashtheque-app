@@ -29,6 +29,7 @@ class Player < ApplicationRecord
 
   belongs_to :creator, class_name: :DiscordUser
   belongs_to :discord_user, optional: true
+  belongs_to :smash_gg_user, optional: true
 
   has_many :characters_players,
            -> { positioned },
@@ -61,6 +62,10 @@ class Player < ApplicationRecord
   before_validation :set_character_names
   before_validation :set_location_names
   before_validation :set_team_names
+
+  validates :name, presence: true
+  validates :discord_user, uniqueness: { allow_nil: true }
+  validates :smash_gg_user, uniqueness: { allow_nil: true }
 
   def set_character_names
     self.character_names = characters.reload.map(&:name)
