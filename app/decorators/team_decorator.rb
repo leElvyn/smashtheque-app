@@ -43,8 +43,11 @@ class TeamDecorator < BaseDecorator
   end
 
   def logo_image_tag(options)
-    return nil if model.logo_url.blank?
-    h.image_tag_with_max_size model.logo_url, options.merge(class: 'avatar')
+    if model.logo_url.blank?
+      default_logo_image_tag(options)
+    else
+      h.image_tag_with_max_size model.logo_url, options.merge(class: 'avatar')
+    end
   end
 
   def default_logo_image_tag(options)
@@ -53,9 +56,15 @@ class TeamDecorator < BaseDecorator
 
   def as_autocomplete_result
     h.content_tag :div, class: 'character' do
-      h.content_tag :div, class: :name do
-        name
-      end
+      (
+        h.content_tag :div, class: :avatar do
+          logo_image_tag(max_width: 32)
+        end
+      ) + (
+        h.content_tag :div, class: :name do
+          full_name
+        end
+      )
     end
   end
 
