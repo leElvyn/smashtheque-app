@@ -11,7 +11,7 @@ fr:
       roots: Superadmins
       to_be_accepted: À valider
       unknown: Inconnus
-      with_admin_user: Admin
+      with_user: Admin
       with_discord_user: Relié à Discord
       without_background: Sans fond
       without_character: Sans perso

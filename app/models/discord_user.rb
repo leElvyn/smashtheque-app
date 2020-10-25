@@ -20,7 +20,7 @@ class DiscordUser < ApplicationRecord
   # RELATIONS
   # ---------------------------------------------------------------------------
 
-  has_one :admin_user, dependent: :nullify
+  has_one :user, dependent: :nullify
   has_one :player, dependent: :nullify
 
   has_many :discord_guild_admins,
@@ -63,8 +63,8 @@ class DiscordUser < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
-  def self.with_admin_user
-    where(id: AdminUser.select(:discord_user_id))
+  def self.with_user
+    where(id: User.select(:discord_user_id))
   end
 
   def self.known
@@ -126,7 +126,7 @@ class DiscordUser < ApplicationRecord
   end
 
   def is_admin?
-    !!admin_user
+    !!user
   end
 
   def is_known?

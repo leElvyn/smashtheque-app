@@ -39,7 +39,7 @@
           <span>Équipes</span>
         <% end %>
       </li>
-      <% if admin_user_signed_in? %>
+      <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to discord_guilds_path, class: 'nav-link' do %>
             <i class="fab fa-discord"></i>
@@ -60,7 +60,7 @@
 
 </nav>
 
-<% if admin_user_signed_in? %>
+<% if user_signed_in? %>
   <nav class="nav" id="admin-nav">
     <%= link_to 'Admin', admin_root_path, class: 'nav-link btn btn-outline-secondary' %>
     <%= link_to '+ Ajouter un joueur', new_admin_player_path, class: 'nav-link btn btn-outline-primary' %>
